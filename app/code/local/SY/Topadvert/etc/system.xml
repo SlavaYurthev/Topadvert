@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<tabs>
+		<sy translate="label">
+			<label>Slava Yurthev</label>
+			<sort_order>1</sort_order>
+		</sy>
+	</tabs>
+	<sections>
+		<topadvert_options translate="label">
+			<label>Topadvert</label>
+			<tab>sy</tab>
+			<sort_order>1</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>0</show_in_website>
+			<show_in_store>0</show_in_store>
+			<groups>
+				<general translate="label">
+					<label>General</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>0</show_in_website>
+					<show_in_store>0</show_in_store>
+					<fields>
+						<active translate="label">
+							<label>Active</label>
+							<frontend_type>select</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+						</active>
+					</fields>
+				</general>
+				<money translate="label">
+					<label>Topadvert Money</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>2</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>0</show_in_website>
+					<show_in_store>0</show_in_store>
+					<fields>
+						<type translate="label">
+							<label>Type</label>
+							<frontend_type>select</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<source_model>topadvert/system_config_source_type</source_model>
+						</type>
+						<value translate="label,comment">
+							<label>Value</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<comment>Base Currency</comment>
+							<validate>required-entry validate-digits</validate>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</value>
+					</fields>
+				</money>
+				<yml translate="label">
+					<label>YML</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>3</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>0</show_in_website>
+					<show_in_store>0</show_in_store>
+					<fields>
+						<path translate="label,comment">
+							<label>Path</label>
+							<comment>relative by magento root dir</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</path>
+						<frequency translate="label">
+							<label>Frequency</label>
+							<frontend_type>select</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<source_model>topadvert/system_config_source_frequency</source_model>
+						</frequency>
+						<period translate="label">
+							<label>Period</label>
+							<frontend_type>select</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<source_model>topadvert/system_config_source_period</source_model>
+						</period>
+						<update_after_place_order translate="label">
+							<label>Update After Place Order</label>
+							<frontend_type>select</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+						</update_after_place_order>
+					</fields>
+				</yml>
+				<price_list translate="label">
+					<label>Price List</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>4</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>0</show_in_website>
+					<show_in_store>0</show_in_store>
+					<fields>
+						<path translate="label,comment">
+							<label>Path</label>
+							<comment>relative by magento root dir</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</path>
+						<frequency translate="label">
+							<label>Frequency</label>
+							<frontend_type>select</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<source_model>topadvert/system_config_source_frequency</source_model>
+						</frequency>
+					</fields>
+				</price_list>
+				<developer translate="label">
+					<label>Developer</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>5</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>0</show_in_website>
+					<show_in_store>0</show_in_store>
+					<fields>
+						<developer translate="label">
+							<label></label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<frontend_model>topadvert/adminhtml_system_config_developer</frontend_model>
+						</developer>
+					</fields>
+				</developer>
+			</groups>
+		</topadvert_options>
+	</sections>
+</config>
