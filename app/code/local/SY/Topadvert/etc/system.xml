@@ -135,6 +135,26 @@
 							<show_in_store>0</show_in_store>
 							<source_model>topadvert/system_config_source_frequency</source_model>
 						</frequency>
+						<author translate="label,comment">
+							<label>Author</label>
+							<frontend_type>select</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<source_model>topadvert/system_config_source_attribute</source_model>
+							<comment>Product Attribute</comment>
+						</author>
+						<isbn translate="label,comment">
+							<label>ISBN</label>
+							<frontend_type>select</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<source_model>topadvert/system_config_source_attribute</source_model>
+							<comment>Product Attribute</comment>
+						</isbn>
 					</fields>
 				</price_list>
 				<developer translate="label">
@@ -146,7 +166,7 @@
 					<show_in_store>0</show_in_store>
 					<fields>
 						<developer translate="label">
-							<label></label>
+							<label>Developer</label>
 							<frontend_type>text</frontend_type>
 							<sort_order>2</sort_order>
 							<show_in_default>1</show_in_default>

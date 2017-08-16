@@ -76,16 +76,16 @@ class SY_Topadvert_Model_Observer extends Mage_Core_Model_Abstract {
 				$path = ltrim($path, '/');
 				$path = Mage::getBaseDir().DS.$path;
 				$rows = array('<?xml version="1.0" encoding="utf-8" ?>');
-				$rows[] = '<data>';
+				$rows[] = '<yml_catalog date="'.date("Y-m-d H:i").'">';
 				$rows[] = '<shop>';
 				$rows[] = '<name>';
-				$rows[] = '<![CDATA['.Mage::getStoreConfig('general/store_information/name').']]>';
+				$rows[] = Mage::getStoreConfig('general/store_information/name');
 				$rows[] = '</name>';
 				$rows[] = '<company>';
-				$rows[] = '<![CDATA['.Mage::getStoreConfig('general/store_information/name').']]>';
+				$rows[] = Mage::getStoreConfig('general/store_information/name');
 				$rows[] = '</company>';
 				$rows[] = '<url>';
-				$rows[] = '<![CDATA['.Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB, true).']]>';
+				$rows[] = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB, true);
 				$rows[] = '</url>';
 				$currencies = Mage::app()->getStore()->getAvailableCurrencyCodes(true);
 				if(count($currencies)>0){
@@ -111,19 +111,21 @@ class SY_Topadvert_Model_Observer extends Mage_Core_Model_Abstract {
 						if($category->getParentId() && !in_array($category->getParentId(), array(1,2))){
 							$parent .= 'parentId="'.$category->getParentId().'"';
 						}
-						$rows[] = '<category id="'.$category->getId().'" '.$parent.'><![CDATA['.$category->getName().']]></category>';
+						$rows[] = '<category id="'.$category->getId().'" '.$parent.'>'.$category->getName().'</category>';
 					}
 					$rows[] = '</categories>';
 				}
+				$author = Mage::getStoreConfig('topadvert_options/price_list/author');
+				$isbn = Mage::getStoreConfig('topadvert_options/price_list/isbn');
 				$products = Mage::getModel('catalog/product')->getCollection()
-					->addAttributeToSelect(array('name','price','special_price','short_description'));
+					->addAttributeToSelect(array('name','price','special_price','short_description',$author,$isbn));
 				if($products->count()>0){
 					$baseCurrencyCode = Mage::app()->getStore()->getBaseCurrencyCode();
 					$rows[] = '<offers>';
 					foreach ($products as $product) {
 						$rows[] = '<offer id="'.$product->getId().'">';
-						$rows[] = '<name><![CDATA['.$product->getName().']]></name>';
-						$rows[] = '<url><![CDATA['.$product->getProductUrl().']]></url>';
+						$rows[] = '<name>'.$product->getName().'</name>';
+						$rows[] = '<url>'.$product->getProductUrl().'</url>';
 						$price = $product->getFinalPrice();
 						if($baseCurrencyCode != 'RUB'){
 							$price = Mage::helper('directory')->currencyConvert(
@@ -135,14 +137,16 @@ class SY_Topadvert_Model_Observer extends Mage_Core_Model_Abstract {
 						$price = round($price, 0, PHP_ROUND_HALF_UP); // number_format($price, 0, '.', '')
 						$rows[] = '<price>'.$price.'</price>';
 						$rows[] = '<currencyId>RUB</currencyId>';
+						$rows[] = '<author>'.$product->getData($author).'</author>';
+						$rows[] = '<ISBN>'.$product->getData($isbn).'</ISBN>';
 						$rows[] = '<categoryId>'.@$product->getCategoryIds()[0].'</categoryId>';
-						$rows[] = '<description><![CDATA['.$product->getShortDescription().']]></description>';
+						$rows[] = '<description>'.$product->getShortDescription().'</description>';
 						$rows[] = '</offer>';
 					}
 					$rows[] = '</offers>';
 				}
 				$rows[] = '</shop>';
-				$rows[] = '</data>';
+				$rows[] = '</yml_catalog>';
 				$xml = implode("\n", $rows);
 				@file_put_contents($path, $xml);
 			}

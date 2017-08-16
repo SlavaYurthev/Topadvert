@@ -134,6 +134,8 @@
 			<price_list>
 				<frequency>0 0 * * *</frequency>
 				<path>price-list.yml</path>
+				<author>author</author>
+				<isbn>isbn</isbn>
 			</price_list>
 			<developer>
 				<developer>Slava Yurthev</developer>
